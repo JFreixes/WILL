@@ -1,3 +1,4 @@
+
 /* 
   Importante: 
   No modificar ni el nombre ni los argumetos que reciben las funciones, sólo deben escribir
@@ -7,10 +8,16 @@
 function crearClasePersona() {
   class Persona {
     constructor(nombre, edad, hobbies, amigos) {
-      // El constructor de la clase Persona recibe nombre (string), edad (integer), hobbies (array de strings), amigos (array de objetos)
+      // El constructor de la clase Persona recibe nombre (string), edad (integer), hobbies (array de strings),
+      // amigos (array de objetos)
       // Inicializar las propiedades de la persona con los valores recibidos como argumento
 
       // Tu código aca:
+      this.nombre = nombre;
+      this.edad = edad;
+      this.hobbies = hobbies;
+      this.amigos = amigos;
+
 
     }
 
@@ -20,6 +27,7 @@ function crearClasePersona() {
       // No debe retornar nada.
 
       // Tu código aca:
+      this.amigos.push({ nombre: nombre, edad: edad})
 
     }
 
@@ -28,7 +36,7 @@ function crearClasePersona() {
       // No debe retornar nada.
 
       // Tu código aca:
-
+        this.hobbies.push(hobby)
     }
     getFriends() {
       // El método 'getFriends' debe retornar un arreglo con sólo los nombres del arreglo de amigos
@@ -39,6 +47,9 @@ function crearClasePersona() {
 
       // Tu código aca:
 
+      var vacio = []
+      var array = this.amigos.forEach((amigo)=>vacio.push(amigo.nombre))
+      return vacio
     }
 
     getHobbies() {
@@ -47,6 +58,10 @@ function crearClasePersona() {
       // persona.getHobbies() debe devolver ['correr', 'dormir', 'nadar']
 
       // Tu código aca:
+
+      var final = []
+      var array = this.hobbies.forEach((hobby)=>final.push(hobby))
+      return final
 
     }
 
@@ -66,8 +81,17 @@ function crearClasePersona() {
       // persona.getPromedioEdad() debería devolver 29 ya que (33 + 25) / 2 = 29
 
       // Tu código aca:
-
+    let edades = []
+    for(let x of this.amigos){
+      edades.push(x.edad)
     }
+    let suma = 0
+    edades.forEach((edad)=>
+      suma+=edad
+    )
+    let promedio = suma/edades.length;
+    return promedio
+    } 
   };
 
   return Persona;
